@@ -1,0 +1,132 @@
+<html>
+<head>
+<style type="text/css">
+   
+   body {
+         background-color: #ffffff;
+         background-image: linear-gradient(#008c87, #004a8c);
+
+   }
+
+   p {
+      font-size: 1.2vw;
+      font-family: "Times New Roman", Times, serif;
+      text-indent: 50px;
+      letter-spacing: 3px;
+      text-shadow: 
+
+
+   }
+
+
+   form fieldset {
+   width: 40%;
+   border: solid black 1px;
+   padding: 3%;
+
+}
+
+form legend {
+   padding: 6px;
+   margin: 10px;
+   border: solid black 1px;
+   font-size: 90%;
+   font-weight: bold;
+   background-color: #e8e8e8;
+}
+
+form label {
+   display: block;
+   font-size: 11px;
+}
+
+form input {
+   width: 100%;
+   border: solid #ccc 1px;
+   font-size: 11px;
+   margin-bottom: 10px;
+}
+
+form input.botao {
+   display: block;
+   width: auto;
+   float: left;
+   
+}
+</style>  
+<title>Juros Compostos</title>
+</head>  
+<body>
+<form name="calcform" method="post" action="">
+   <fieldset>
+      <legend>Calculadora Juros Compostos</legend>
+
+      <label for="reais">Digite o valor em reais: </label>
+      <input type="text" name="reais" id="reais" />
+
+      <label for="meses">Digite os meses :</label>
+      <input type="text" name="meses" id="meses" />
+
+      <label for="juros">Digite a porcentagem de juros :</label>
+      <input type="text" name="juros" id="juros" />
+      <button type="button" onclick="calcular()">Calcular</button>
+      <p>
+      <div class="tabela">
+      <p id="tabela"><u>Resultado: </u></p>
+      </div>   
+      <p id="rendimento"><u>Rendimento: </u></p>
+      <p id="rendimento2"><u>Porcentagem: </u></p>
+
+      
+   </fieldset>
+</form>
+</body>
+
+<script type="text/javascript">
+   
+
+
+function calcular() {
+   
+      
+   var reais = document.calcform.reais.value;
+   var meses = document.calcform.meses.value;
+   var juros = document.calcform.juros.value;
+   var i = 0;
+   var text1 = "";
+   var text2 = "";
+   var text3 = "";
+   
+
+      while (i <= meses) {
+         var resultado1 = reais * Math.pow((1 + (juros/100)), i);
+         var resultado2 = parseFloat(resultado1.toFixed(2));
+         text1 += "<br>Resultado = " + resultado2;
+         i++;
+         }
+         document.getElementById("tabela").innerHTML = text1;
+      
+
+
+      var rend1 = (resultado2) - (reais);
+      var rend2 = parseFloat(rend1.toFixed(2));
+      var rend3 = parseInt(rend2) / 10;
+      text2 += "<br>Rendimento = " + rend2;
+      text3 += "<br>Porcentagem = " + rend3;
+      document.getElementById("rendimento").innerHTML = text2;
+      document.getElementById("rendimento2").innerHTML = text3 + "%";
+
+
+
+   
+
+   
+}
+
+
+
+</script>
+
+
+</html>
+
